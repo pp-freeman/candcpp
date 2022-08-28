@@ -38,9 +38,14 @@ public:
 
     }
 
-    void PostMessage(AzNttMessageType msg_type, string& msg) {
+    void PostMessage(AzNttMessageType msg_type, string &msg) {
+        std::cout << "this PostMessage";
         this->producer->produce(_msg_builder_map[msg_type]->payload(msg));
         this->producer->flush();
+    }
+
+    void TestMessage(char *msg) {
+       std::cout << "this kafka_producer TestMessage: " << msg;
     }
 
 private:
